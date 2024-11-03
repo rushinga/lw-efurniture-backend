@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+
+        /* Global Styles */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+    --danger-color: #e74c3c;
+    --success-color: #2ecc71;
+    --warning-color: #f1c40f;
+    --text-color: #2c3e50;
+    --light-gray: #ecf0f1;
+    --white: #ffffff;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: #f5f6fa;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.brand {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.brand:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: var(--light-gray);
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.nav-link.active {
+    background-color: var(--accent-color);
+    color: var(--white);
+}
+
+.notification-badge {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+}
+
+/* Right Section Styles */
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.language-switch {
+    padding: 0.5rem;
+    border: 1px solid var(--light-gray);
+    border-radius: 6px;
+    background-color: var(--white);
+    color: var(--text-color);
+}
+
+/* Profile Dropdown Styles */
+.profile-section {
+    position: relative;
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--light-gray);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-icon:hover {
+    background-color: var(--accent-color);
+    color: var(--white);
+}
+
+.profile-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: var(--white);
+    min-width: 200px;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+}
+
+.dropdown-item {
+    color: var(--text-color);
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: var(--light-gray);
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: var(--light-gray);
+    margin: 0.5rem 0;
+}
+
+/* Main Content Styles */
+.main-content {
+    padding: 2rem;
+}
+
+/* Table Styles */
+.table {
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.table-dark {
+    background-color: var(--primary-color);
+}
+
+.table th {
+    font-weight: 600;
+    padding: 1rem;
+}
+
+.table td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.table th a {
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.table th a:hover {
+    color: var(--light-gray);
+}
+
+/* Button Styles */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.btn-success:hover {
+    background-color: #27ae60;
+    border-color: #27ae60;
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    border-color: var(--warning-color);
+    color: var(--text-color);
+}
+
+.btn-warning:hover {
+    background-color: #f39c12;
+    border-color: #f39c12;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    border-color: #c0392b;
+}
+
+/* Pagination Styles */
+.pagination {
+    margin-top: 2rem;
+}
+
+.page-link {
+    color: var(--accent-color);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--light-gray);
+}
+
+.page-item.active .page-link {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: var(--white);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .right-section {
+        width: 100%;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <a th:href="@{/admin}" class="brand">
+<!--        <i class="fas fa-couch"></i>-->
+        e-Furniture Admin
+    </a>
+
+    <div class="nav-links">
+        <a th:href="@{/admin/users}" class="nav-link" th:classappend="${active == 'users'} ? 'active' : ''">
+            <i class="fas fa-users"></i>
+            <span>Users</span>
+        </a>
+        <a th:href="@{/admin/furniture}" class="nav-link" th:classappend="${active == 'furniture'} ? 'active' : ''">
+            <i class="fas fa-couch"></i>
+            <span>Furniture</span>
+        </a>
+        <a th:href="@{/admin/orders}" class="nav-link" th:classappend="${active == 'orders'} ? 'active' : ''">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Orders</span>
+<!--            <span class="notification-badge">5</span>-->
+        </a>
+        <a th:href="@{/admin/notifications}" class="nav-link" th:classappend="${active == 'notifications'} ? 'active' : ''">
+            <i class="fas fa-bell"></i>
+            <span>Notifications</span>
+<!--            <span class="notification-badge">3</span>-->
+        </a>
+        <a th:href="@{/admin/analytics}" class="nav-link" th:classappend="${active == 'analytics'} ? 'active' : ''">
+            <i class="fas fa-chart-line"></i>
+            <span>Analytics</span>
+        </a>
+    </div>
+
+    <div class="right-section">
+        <select class="language-switch" id="languageSelect" th:onchange="|changeLanguage(this.value)|">
+            <option value="en" th:selected="${language == 'en'}">English</option>
+            <option value="es" th:selected="${language == 'es'}">Español</option>
+            <option value="fr" th:selected="${language == 'fr'}">Français</option>
+        </select>
+
+        <a th:href="@{/logout}" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+        </a>
+        <div class="profile-section">
+            <div class="profile-dropdown">
+                <div class="profile-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="dropdown-content">
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-user-circle"></i>
+                        My Profile
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-cog"></i>
+                        Settings
+                    </a>
+<!--                    <div class="dropdown-divider"></div>-->
+<!--                    <a th:href="@{/logout}" class="dropdown-item">-->
+<!--                        <i class="fas fa-sign-out-alt"></i>-->
+<!--                        Logout-->
+<!--                    </a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<main class="main-content">
+    <div class="container mt-4">
+        <h3>User Management</h3>
+        <hr>
+        <div class="mb-3">
+            <a th:href="@{/admin/users/add}" class="btn btn-primary"><i class="fas fa-user-plus"></i>
+                 Add New User</a>
+            <a th:href="@{/admin/users/search}" class="btn btn-primary"><i class="fas fa-search"></i>
+                 Search User</a>
+            <a th:href="@{/admin/download/users}" class="btn btn-success">
+                <i class="fas fa-file-export"></i> Export Data (CSV)
+            </a>
+            <a th:href="@{/admin/download/users/pdf}" class="btn btn-primary">
+                <i class="fas fa-file-pdf"></i> Export Data (PDF)
+            </a> <a th:href="@{/admin/upload/users}"  class="btn btn-success" ><i class="fas fa-file-import"></i>Import Data</a>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+            <tr>
+                <th><a th:href="@{/admin/users(sortBy='username', pageNo=${currentPage}, pageSize=${pageSize})}">Username<i class="fas fa-sort"></i></a></th>
+                <th><a th:href="@{/admin/users(sortBy='firstName', pageNo=${currentPage}, pageSize=${pageSize})}">First Name<i class="fas fa-sort"></i></a></th>
+                <th><a th:href="@{/admin/users(sortBy='lastName', pageNo=${currentPage}, pageSize=${pageSize})}">Last Name<i class="fas fa-sort"></i></a></th>
+                <th><a th:href="@{/admin/users(sortBy='email', pageNo=${currentPage}, pageSize=${pageSize})}">Email<i class="fas fa-sort"></i></a></th>
+                <th><a th:href="@{/admin/users(sortBy='phoneNumber', pageNo=${currentPage}, pageSize=${pageSize})}">Phone Number<i class="fas fa-sort"></i></a></th>
+                <th><a th:href="@{/admin/users(sortBy='role', pageNo=${currentPage}, pageSize=${pageSize})}">Role<i class="fas fa-sort"></i></a></th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.phoneNumber}"></td>
+                <td th:text="${user.role}"></td>
+                <td>
+                    <a th:href="@{/admin/users/edit/{id}(id=${user.id})}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Edit</a>
+                    <form th:action="@{/admin/users/delete/{id}(id=${user.id})}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination Controls -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled' : ''">
+                    <a class="page-link" th:href="@{/admin/users(pageNo=${currentPage - 1}, pageSize=${pageSize})}">Previous</a>
+                </li>
+                <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}" th:classappend="${currentPage == i} ? 'active' : ''">
+                    <a class="page-link" th:href="@{/admin/users(pageNo=${i}, pageSize=${pageSize})}" th:text="${i + 1}">1</a>
+                </li>
+                <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled' : ''">
+                    <a class="page-link" th:href="@{/admin/users(pageNo=${currentPage + 1}, pageSize=${pageSize})}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LW Furniture|Register</title>
+    <link rel="stylesheet" th:href="@{/css/logreg-styles.css}" />
+</head>
+<body>
+
+<header>
+    <div class="banner">Get free delivery on orders over $80</div>
+    <nav>
+        <div id="logo">Light of the World <br /> Furniture</div>
+        <ul class="navigation-menu">
+            <li><a th:href="@{/home}">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about-us">About us</a></li>
+            <li><a href="#contact-info">Contact</a></li>
+        </ul>
+        <div id="utility">
+            <button class="button-86" th:onclick="'window.location.href=\'/login\''">Login</button>
+            <button class="button-86" th:onclick="'window.location.href=\'/register\''">Get Started</button>
+        </div>
+    </nav>
+</header>
+<section class="register-section">
+    <div class="register-form-container">
+        <h1>Register</h1>
+        <form action="#" th:action="@{/register}" method="post" th:object="${user}">
+            <input type="text" th:field="*{username}" placeholder="Choose a Username" required>
+            <input type="email" th:field="*{email}" placeholder="Enter Your Email" required>
+            <input type="password" th:field="*{password}" placeholder="Create a Password" required>
+
+            <!-- Role selection -->
+            <select th:field="*{role}" required>
+                <option value="" disabled selected>Select Your Role</option>
+                <option value="ROLE_USER">Customer</option>
+                <option value="ROLE_SELLER">Seller</option>
+            </select>
+
+            <button type="submit">Register</button>
+        </form>
+        <p th:text="${message}" class="registration-message"></p>
+        <p><a th:href="@{/login}">Already have an account? Log in</a></p>
+    </div>
+    <div class="register-info-container">
+        <div class="motivational-text"><h2 class="logo-name">Light of the World Furniture</h2>
+            <p class="logo-name"> Furniture that Shines | Furniture that Inspires</p>
+        </div>
+        <div class="motivational-text">
+            <h2>Welcome Back to Your Dream Space!</h2>
+            <p>Register to unlock exclusive access to our latest furniture collections and special deals.</p>
+            <p>Transform your home with our unique designs and elevate your living experience!</p>
+        </div>
+    </div>
+</section>
+<!-- Footer -->
+
+<footer class="footer">
+    <p class="footer__text">
+        Created by
+        <a
+                href="https://www.linkedin.com/in/ashimwe-cedrick"
+                target="_blank"
+                rel="noopener"
+        >
+            Ashimwe Rushinga Cedrick
+        </a>
+        &copy; 2024 Your Furniture Company
+    </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seller Page</title>
+    <style>
+        /* Basic reset and styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Header styling */
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        /* Container for page content */
+        .content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Message paragraph */
+        .message {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        /* Notification section styling */
+        #user-notifications {
+            margin-top: 20px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #user-notifications h3 {
+            font-size: 1.5em;
+            color: #343a40;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #notification-count {
+            font-size: 0.9em;
+            color: #007bff;
+            background: #e0f7ff;
+            border-radius: 12px;
+            padding: 3px 8px;
+        }
+
+        /* Individual notification item styling */
+        .notification-item {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border-left: 4px solid #007bff;
+        }
+
+        .notification-item strong {
+            font-size: 1.1em;
+            color: #007bff;
+        }
+
+        .notification-item p {
+            margin-top: 5px;
+            color: #495057;
+            font-size: 0.95em;
+        }
+
+        /* Logout link styling */
+        a[th\\:href] {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px;
+            max-width: 150px;
+            color: white;
+            background-color: #dc3545;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        a[th\\:href]:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <h1>Welcome to the Seller Page</h1>
+    <div class="message">
+        <p th:text="${message}"></p>
+    </div>
+
+    <div id="user-notifications">
+        <h3>Notifications <span id="notification-count"></span></h3>
+        <div id="user-notification-list">
+            <!-- Notifications will be appended here by JavaScript -->
+        </div>
+    </div>
+
+
+    <a th:href="@{/sellerPage(lang='en')}">English</a>
+    <a th:href="@{/sellerPage(lang='fr')}">Français</a>
+
+    <h1 th:text="#{page.title}"></h1>
+    <h3 th:text="#{notifications.header}"></h3>
+
+
+
+    <p><a th:href="@{/logout}">Logout</a></p>
+</div>
+
+<script>
+    async function fetchUserNotifications() {
+        const response = await fetch('/notifications/user/unread');
+        const notifications = await response.json();
+        const notificationListDiv = document.getElementById('user-notification-list');
+
+        notificationListDiv.innerHTML = ''; // Clear previous notifications
+        notifications.forEach(notification => {
+            const notificationItem = document.createElement('div');
+            notificationItem.className = 'notification-item';
+            notificationItem.innerHTML = `
+                <strong>${notification.title}</strong>
+                <p>${notification.message}</p>
+            `;
+            notificationListDiv.appendChild(notificationItem);
+        });
+
+        // Update unread notification count
+        document.getElementById('notification-count').innerText = notifications.length;
+
+        // Mark notifications as read after displaying
+        markAllNotificationsAsRead();
+    }
+
+    async function markAllNotificationsAsRead() {
+        await fetch('/notifications/user/mark-all-as-read', { method: 'PUT' });
+    }
+
+    // Fetch notifications on page load
+    window.onload = fetchUserNotifications;
+</script>
+</body>
+</html>

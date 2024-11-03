@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - E-Furniture</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"> <!-- Adjust the path as necessary -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4" th:fragment="userManagementContent">
+    <h3>User Management</h3>
+    <hr>
+    <div class="mb-3">
+        <a th:href="@{/admin/users/add}" class="btn btn-primary">Add New User</a>
+        <a th:href="@{/admin/search}" class="btn btn-primary">Search User</a>
+        <a th:href="@{/admin/download/users}" class="btn btn-success">Download Data</a>
+        <a th:href="@{/admin/upload/furniture}" class="btn btn-success">Upload Data</a>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th><a th:href="@{/admin/users(sortBy='username', pageNo=${currentPage}, pageSize=${pageSize})}">Username</a></th>
+            <th><a th:href="@{/admin/users(sortBy='firstName', pageNo=${currentPage}, pageSize=${pageSize})}">First Name</a></th>
+            <th><a th:href="@{/admin/users(sortBy='lastName', pageNo=${currentPage}, pageSize=${pageSize})}">Last Name</a></th>
+            <th><a th:href="@{/admin/users(sortBy='email', pageNo=${currentPage}, pageSize=${pageSize})}">Email</a></th>
+            <th><a th:href="@{/admin/users(sortBy='phoneNumber', pageNo=${currentPage}, pageSize=${pageSize})}">Phone Number</a></th>
+            <th>Profile Picture</th>
+            <th><a th:href="@{/admin/users(sortBy='role', pageNo=${currentPage}, pageSize=${pageSize})}">Role</a></th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.phoneNumber}"></td>
+            <td>
+                <img th:src="${user.profilePicture}" alt="Profile Picture" width="40" height="40">
+            </td>
+            <td th:text="${user.role}"></td>
+            <td>
+                <a th:href="@{/admin/users/edit/{id}(id=${user.id})}" class="btn btn-warning btn-sm">Edit</a>
+                <form th:action="@{/admin/users/delete/{id}(id=${user.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Pagination Controls -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{/admin/users(pageNo=${currentPage - 1}, pageSize=${pageSize})}">Previous</a>
+            </li>
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}" th:classappend="${currentPage == i} ? 'active' : ''">
+                <a class="page-link" th:href="@{/admin/users(pageNo=${i}, pageSize=${pageSize})}" th:text="${i + 1}">1</a>
+            </li>
+            <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{/admin/users(pageNo=${currentPage + 1}, pageSize=${pageSize})}">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title th:text="${title}">eFurniture Admin Dashboard</title>-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">-->
+<!--    <style>-->
+<!--        * {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            box-sizing: border-box;-->
+<!--            font-family: 'Arial', sans-serif;-->
+<!--        }-->
+
+
+
+<!--        .navbar {-->
+<!--            background-color: var(&#45;&#45;primary-color);-->
+<!--            padding: 1rem 2rem;-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            align-items: center;-->
+<!--            box-shadow: 0 2px 5px rgba(0,0,0,0.2);-->
+<!--        }-->
+
+<!--        .brand {-->
+<!--            color: var(&#45;&#45;text-color);-->
+<!--            font-size: 1.5rem;-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        .nav-links {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            gap: 2rem;-->
+<!--        }-->
+
+<!--        .nav-link {-->
+<!--            color: var(&#45;&#45;text-color);-->
+<!--            text-decoration: none;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            gap: 0.5rem;-->
+<!--            padding: 0.5rem 1rem;-->
+<!--            border-radius: 4px;-->
+<!--            transition: background-color 0.3s;-->
+<!--        }-->
+
+<!--        .nav-link:hover {-->
+<!--            background-color: var(&#45;&#45;secondary-color);-->
+<!--        }-->
+
+<!--        .nav-link i {-->
+<!--            font-size: 1.2rem;-->
+<!--        }-->
+
+<!--        .right-section {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            gap: 1.5rem;-->
+<!--        }-->
+
+<!--        .language-switch {-->
+<!--            background-color: var(&#45;&#45;secondary-color);-->
+<!--            color: var(&#45;&#45;text-color);-->
+<!--            border: none;-->
+<!--            padding: 0.5rem 1rem;-->
+<!--            border-radius: 4px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        .profile-section {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            gap: 1rem;-->
+<!--            position: relative;-->
+<!--        }-->
+
+<!--        .profile-icon {-->
+<!--            width: 40px;-->
+<!--            height: 40px;-->
+<!--            background-color: var(&#45;&#45;accent-color);-->
+<!--            border-radius: 50%;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        .logout-btn {-->
+<!--            background-color: #e74c3c;-->
+<!--            color: white;-->
+<!--            border: none;-->
+<!--            padding: 0.5rem 1rem;-->
+<!--            border-radius: 4px;-->
+<!--            cursor: pointer;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            gap: 0.5rem;-->
+<!--            transition: background-color 0.3s;-->
+<!--        }-->
+
+<!--        .logout-btn:hover {-->
+<!--            background-color: #c0392b;-->
+<!--        }-->
+
+<!--        .main-content {-->
+<!--            padding: 2rem;-->
+<!--        }-->
+
+<!--        .dashboard-title {-->
+<!--            color: var(&#45;&#45;primary-color);-->
+<!--            margin-bottom: 1rem;-->
+<!--        }-->
+
+<!--        @media (max-width: 768px) {-->
+<!--            .nav-links {-->
+<!--                display: none;-->
+<!--            }-->
+
+<!--            .menu-toggle {-->
+<!--                display: block;-->
+<!--                color: var(&#45;&#45;text-color);-->
+<!--                font-size: 1.5rem;-->
+<!--                cursor: pointer;-->
+<!--            }-->
+<!--        }-->
+
+<!--        .feature {-->
+<!--    background-color: #ffffff;-->
+<!--    border: 1px solid #e0e0e0;-->
+<!--    border-radius: 8px;-->
+<!--    padding: 1rem;-->
+<!--    margin-bottom: 1rem;-->
+<!--}-->
+
+<!--.feature h3 {-->
+<!--    color: var(&#45;&#45;primary-color);-->
+<!--}-->
+
+<!--.feature p {-->
+<!--    color: #7f8c8d;-->
+<!--}-->
+
+<!--.feature a {-->
+<!--    display: inline-block;-->
+<!--    margin-top: 0.5rem;-->
+<!--    color: var(&#45;&#45;accent-color);-->
+<!--    text-decoration: none;-->
+<!--}-->
+
+<!--.feature a:hover {-->
+<!--    text-decoration: underline;-->
+<!--}-->
+
+<!--section {-->
+<!--    margin-bottom: 2rem;-->
+<!--}-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<nav class="navbar">-->
+<!--    <a th:href="@{/admin}" class="brand">-->
+<!--        <i class="fas fa-couch"></i>-->
+<!--        eFurniture Admin-->
+<!--    </a>-->
+
+<!--    <div class="nav-links">-->
+<!--        <a th:href="@{/admin/users}" class="nav-link" th:classappend="${active == 'users'} ? 'active' : ''">-->
+<!--            <i class="fas fa-users"></i>-->
+<!--            <span>Users</span>-->
+<!--        </a>-->
+<!--        <a th:href="@{/admin/furniture}" class="nav-link" th:classappend="${active == 'furniture'} ? 'active' : ''">-->
+<!--            <i class="fas fa-couch"></i>-->
+<!--            <span>Furniture</span>-->
+<!--        </a>-->
+<!--        <a th:href="@{/admin/orders}" class="nav-link" th:classappend="${active == 'orders'} ? 'active' : ''">-->
+<!--            <i class="fas fa-shopping-cart"></i>-->
+<!--            <span>Orders</span>-->
+<!--            <span class="notification-badge">5</span>-->
+<!--        </a>-->
+<!--        <a th:href="@{/admin/notifications}" class="nav-link" th:classappend="${active == 'notifications'} ? 'active' : ''">-->
+<!--            <i class="fas fa-bell"></i>-->
+<!--            <span>Notifications</span>-->
+<!--            <span class="notification-badge">3</span>-->
+<!--        </a>-->
+<!--    </div>-->
+
+<!--    <div class="right-section">-->
+<!--        <select class="language-switch" id="languageSelect" th:onchange="|changeLanguage(this.value)|">-->
+<!--            <option value="en" th:selected="${language == 'en'}">English</option>-->
+<!--            <option value="es" th:selected="${language == 'es'}">Español</option>-->
+<!--            <option value="fr" th:selected="${language == 'fr'}">Français</option>-->
+<!--        </select>-->
+
+<!--        <div class="profile-section">-->
+<!--            <div class="profile-dropdown">-->
+<!--                <div class="profile-icon">-->
+<!--                    <i class="fas fa-user"></i>-->
+<!--                </div>-->
+<!--                <div class="dropdown-content">-->
+<!--                    <a href="#" class="dropdown-item">-->
+<!--                        <i class="fas fa-user-circle"></i>-->
+<!--                        My Profile-->
+<!--                    </a>-->
+<!--                    <a href="#" class="dropdown-item">-->
+<!--                        <i class="fas fa-cog"></i>-->
+<!--                        Settings-->
+<!--                    </a>-->
+<!--                    <div class="dropdown-divider"></div>-->
+<!--                    <a th:href="@{/logout}" class="dropdown-item">-->
+<!--                        <i class="fas fa-sign-out-alt"></i>-->
+<!--                        Logout-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--<main class="main-content">-->
+<!--    <div class="container mt-4">-->
+<!--    <h3>User Management</h3>-->
+<!--    <hr>-->
+<!--    <div class="mb-3">-->
+<!--        <a th:href="@{/admin/users/add}" class="btn btn-primary">Add New User</a>-->
+<!--        <a th:href="@{/admin/search}" class="btn btn-primary">Search User</a>-->
+<!--        <a th:href="@{/admin/download/users}" class="btn btn-success">Download Data</a>-->
+<!--        <a th:href="@{/admin/upload/furniture}" class="btn btn-success">Upload Data</a>-->
+<!--    </div>-->
+<!--    <table class="table table-bordered table-striped">-->
+<!--        <thead class="table-dark">-->
+<!--        <tr>-->
+<!--            <th><a th:href="@{/admin/users(sortBy='username', pageNo=${currentPage}, pageSize=${pageSize})}">Username</a></th>-->
+<!--            <th><a th:href="@{/admin/users(sortBy='firstName', pageNo=${currentPage}, pageSize=${pageSize})}">First Name</a></th>-->
+<!--            <th><a th:href="@{/admin/users(sortBy='lastName', pageNo=${currentPage}, pageSize=${pageSize})}">Last Name</a></th>-->
+<!--            <th><a th:href="@{/admin/users(sortBy='email', pageNo=${currentPage}, pageSize=${pageSize})}">Email</a></th>-->
+<!--            <th><a th:href="@{/admin/users(sortBy='phoneNumber', pageNo=${currentPage}, pageSize=${pageSize})}">Phone Number</a></th>-->
+<!--&lt;!&ndash;            <th>Profile Picture</th>&ndash;&gt;-->
+<!--            <th><a th:href="@{/admin/users(sortBy='role', pageNo=${currentPage}, pageSize=${pageSize})}">Role</a></th>-->
+<!--            <th>Actions</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="user : ${users}">-->
+<!--            <td th:text="${user.username}"></td>-->
+<!--            <td th:text="${user.firstName}"></td>-->
+<!--            <td th:text="${user.lastName}"></td>-->
+<!--            <td th:text="${user.email}"></td>-->
+<!--            <td th:text="${user.phoneNumber}"></td>-->
+<!--&lt;!&ndash;            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <img th:src="${user.profilePicture}" alt="Profile Picture" width="40" height="40">&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--            <td th:text="${user.role}"></td>-->
+<!--            <td>-->
+<!--                <a th:href="@{/admin/users/edit/{id}(id=${user.id})}" class="btn btn-warning btn-sm">Edit</a>-->
+<!--                <form th:action="@{/admin/users/delete/{id}(id=${user.id})}" method="post" style="display:inline;">-->
+<!--                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>-->
+<!--                </form>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+
+<!--    &lt;!&ndash; Pagination Controls &ndash;&gt;-->
+<!--    <nav aria-label="Page navigation">-->
+<!--        <ul class="pagination justify-content-center">-->
+<!--            <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled' : ''">-->
+<!--                <a class="page-link" th:href="@{/admin/users(pageNo=${currentPage - 1}, pageSize=${pageSize})}">Previous</a>-->
+<!--            </li>-->
+<!--            <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}" th:classappend="${currentPage == i} ? 'active' : ''">-->
+<!--                <a class="page-link" th:href="@{/admin/users(pageNo=${i}, pageSize=${pageSize})}" th:text="${i + 1}">1</a>-->
+<!--            </li>-->
+<!--            <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled' : ''">-->
+<!--                <a class="page-link" th:href="@{/admin/users(pageNo=${currentPage + 1}, pageSize=${pageSize})}">Next</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </nav>-->
+<!--    </div>-->
+
+<!--</main>-->
+
+<!--<script th:inline="javascript">-->
+<!--    // Language switching functionality-->
+<!--    function changeLanguage(language) {-->
+<!--        console.log(`Language changed to: ${language}`);-->
+<!--    }-->
+
+<!--    // Logout functionality-->
+<!--    function logout() {-->
+<!--        if(confirm('Are you sure you want to logout?')) {-->
+<!--            console.log('Logging out...');-->
+<!--            // window.location.href = 'login.html';-->
+<!--        }-->
+<!--    }-->
+
+<!--    // Profile icon click functionality-->
+<!--    function profileIconClick() {-->
+<!--        console.log('Profile clicked');-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

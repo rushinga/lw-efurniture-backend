@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Light of the World Furniture</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<header>
+    <div class="banner">Get free delivery on orders over 100k rwf</div>
+    <nav>
+        <div id="logo">
+            Light of the World <br />
+            Furniture
+        </div>
+        <ul class="navigation-menu">
+            <li>
+                <a th:href="@{/home}">Home</a>
+            </li>
+            <li><a th:href="'#products'">Products</a></li>
+            <li><a th:href="'#about-us'">About us</a></li>
+            <li><a th:href="'#contact-info'">Contact</a></li>
+        </ul>
+
+        <div id="utility">
+            <button class="button-86" th:onclick="'window.location.href=\'/login\''">Login</button>
+            <button class="button-86" th:onclick="'window.location.href=\'/register\''">Get Started</button>
+        </div>
+    </nav>
+</header>
+
+<section id="e-showroom">
+    <h2>Our E-Showroom</h2>
+    <p class="section-description">Explore our exclusive collection of furniture products designed to enhance your living spaces.</p>
+
+    <!-- Living Room Furniture -->
+    <div class="category">
+        <div class="category-header">
+            <h3>Living Room Furniture</h3>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/sofa.jpg" alt="Elegant Sofa" />
+                </div>
+                <div class="product-details">
+                    <h3>Elegant Sofa</h3>
+                    <p class="price">$799</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/coffee-table.jpg" alt="Modern Coffee Table" />
+                </div>
+                <div class="product-details">
+                    <h3>Modern Coffee Table</h3>
+                    <p class="price">$299</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/armchair.jpg" alt="Comfortable Armchair" />
+                </div>
+                <div class="product-details">
+                    <h3>Comfortable Armchair</h3>
+                    <p class="price">$499</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/entertainment-unit.jpg" alt="Entertainment Unit" />
+                </div>
+                <div class="product-details">
+                    <h3>Entertainment Unit</h3>
+                    <p class="price">$599</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <!-- Add more living room products here -->
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-header">
+            <h3>Living Room Furniture</h3>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/sofa.jpg" alt="Elegant Sofa" />
+                </div>
+                <div class="product-details">
+                    <h3>Elegant Sofa</h3>
+                    <p class="price">$799</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/coffee-table.jpg" alt="Modern Coffee Table" />
+                </div>
+                <div class="product-details">
+                    <h3>Modern Coffee Table</h3>
+                    <p class="price">$299</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/armchair.jpg" alt="Comfortable Armchair" />
+                </div>
+                <div class="product-details">
+                    <h3>Comfortable Armchair</h3>
+                    <p class="price">$499</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/entertainment-unit.jpg" alt="Entertainment Unit" />
+                </div>
+                <div class="product-details">
+                    <h3>Entertainment Unit</h3>
+                    <p class="price">$599</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <!-- Add more living room products here -->
+        </div>
+    </div>
+    <div class="category">
+        <div class="category-header">
+            <h3>Living Room Furniture</h3>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/sofa.jpg" alt="Elegant Sofa" />
+                </div>
+                <div class="product-details">
+                    <h3>Elegant Sofa</h3>
+                    <p class="price">$799</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/coffee-table.jpg" alt="Modern Coffee Table" />
+                </div>
+                <div class="product-details">
+                    <h3>Modern Coffee Table</h3>
+                    <p class="price">$299</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/armchair.jpg" alt="Comfortable Armchair" />
+                </div>
+                <div class="product-details">
+                    <h3>Comfortable Armchair</h3>
+                    <p class="price">$499</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/entertainment-unit.jpg" alt="Entertainment Unit" />
+                </div>
+                <div class="product-details">
+                    <h3>Entertainment Unit</h3>
+                    <p class="price">$599</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <!-- Add more living room products here -->
+        </div>
+    </div>
+    <div class="category">
+        <div class="category-header">
+            <h3>Living Room Furniture</h3>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/sofa.jpg" alt="Elegant Sofa" />
+                </div>
+                <div class="product-details">
+                    <h3>Elegant Sofa</h3>
+                    <p class="price">$799</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/coffee-table.jpg" alt="Modern Coffee Table" />
+                </div>
+                <div class="product-details">
+                    <h3>Modern Coffee Table</h3>
+                    <p class="price">$299</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/armchair.jpg" alt="Comfortable Armchair" />
+                </div>
+                <div class="product-details">
+                    <h3>Comfortable Armchair</h3>
+                    <p class="price">$499</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/img/entertainment-unit.jpg" alt="Entertainment Unit" />
+                </div>
+                <div class="product-details">
+                    <h3>Entertainment Unit</h3>
+                    <p class="price">$599</p>
+                    <button class="btn-filled-dark" onclick="promptLogin()">Buy Now</button>
+                </div>
+            </div>
+            <!-- Add more living room products here -->
+        </div>
+    </div>
+    <!-- Repeat similar structure for other categories (Bedroom, Dining Room, etc.) -->
+
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p class="footer__text">Created by <a href="https://www.linkedin.com/in/ashimwe-cedrick" target="_blank" rel="noopener">Ashimwe Rushinga Cedrick</a> &copy; 2024 Your Furniture Company</p>
+</footer>
+
+<script>
+    function promptLogin() {
+        const userResponse = confirm("Please log in or register to proceed with your purchase.");
+        if (userResponse) {
+            // Redirect to login page
+            window.location.href = '/login'; // Change this to your actual login URL
+        }
+    }
+</script>
+
+</body>
+</ html>

@@ -1,0 +1,143 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Customer Page</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div>-->
+<!--    <p th:text="${message}"></p>-->
+<!--</div>-->
+<!--<h1>Welcome to the Customer Page</h1>-->
+<!--<p><a th:href="@{/logout}">Logout</a></p>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .dashboard {
+            display: flex;
+            padding: 20px;
+        }
+        .sidebar {
+            width: 200px;
+            background: #fff;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+        .content {
+            flex-grow: 1;
+            background: #fff;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .btn-add-to-cart {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn-add-to-cart:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to Your Dashboard</h1>
+    <nav>
+        <a href="#profile">Profile</a>
+        <a href="#products">Products</a>
+        <a href="#logout" onclick="logout()">Logout</a>
+    </nav>
+</header>
+
+<div class="dashboard">
+    <div class="sidebar">
+        <h3>Your Profile</h3>
+        <p>Name: John Doe</p>
+        <p>Email: john.doe@example.com</p>
+        <button onclick="editProfile()">Edit Profile</button>
+    </div>
+
+    <div class="content">
+        <h2>Available Products</h2>
+        <div class="product-card">
+            <h3>Elegant Sofa</h3>
+            <p>Price: $799</p>
+            <button class="btn-add-to-cart" onclick="addToCart('Elegant Sofa')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <h3>Modern Coffee Table</h3>
+            <p>Price: $299</p>
+            <button class="btn-add-to-cart" onclick="addToCart('Modern Coffee Table')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <h3>Comfortable Armchair</h3>
+            <p>Price: $499</p>
+            <button class="btn-add-to-cart" onclick="addToCart('Comfortable Armchair')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <h3>Entertainment Unit</h3>
+            <p>Price: $599</p>
+            <button class="btn-add-to-cart" onclick="addToCart('Entertainment Unit')">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function addToCart(product) {
+        alert(product + " has been added to your cart!");
+    }
+
+    function logout() {
+        // Redirect to the login page or perform logout actions
+        window.location.href = '/login.html'; // Change this to your actual login URL
+    }
+
+    function editProfile() {
+        // Redirect to the profile edit page
+        window.location.href = '/edit-profile.html'; // Change this to your actual profile edit URL
+    }
+</script>
+
+</body >
+</html>
