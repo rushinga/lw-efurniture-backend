@@ -34,10 +34,10 @@ public class UserService {
     @Autowired
     private JavaMailSender mailSender;
 
-//    @PostConstruct
-//    public void init() {
-//        addAdminUser(); // Automatically add the admin user on application startup
-//    }
+    @PostConstruct
+    public void init() {
+        addAdminUser(); // Automatically add the admin user on application startup
+    }
 
 
 
