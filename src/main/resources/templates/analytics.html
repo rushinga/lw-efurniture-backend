@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <style>
 
         /* Global Styles */
@@ -376,7 +381,6 @@ body {
     </div>
 </nav>
 <main class="main-content">
-
     <div class="container mt-4">
         <h2>User Role Statistics</h2>
         <div class="chart-container">
@@ -384,6 +388,7 @@ body {
         </div>
     </div>
 </main>
+
 <!-- Load Chart.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.7.0/chart.min.js"></script>
 <script>
@@ -393,7 +398,7 @@ body {
         .then(data => {
             const ctx = document.getElementById('userRoleChart').getContext('2d');
             new Chart(ctx, {
-                type: 'pie', // You can change this to 'bar', 'line', etc.
+                type: 'bar', // You can change this to 'bar', 'line', etc.
                 data: {
                     labels: Object.keys(data), // User roles
                     datasets: [{
@@ -414,7 +419,7 @@ body {
                     plugins: {
                         title: {
                             display: true,
-                            text: 'User  Distribution by Role'
+                            text: 'User Distribution by Role'
                         },
                         legend: {
                             position: 'top',
@@ -432,5 +437,6 @@ body {
         })
         .catch(error => console.error('Error fetching user role statistics:', error));
 </script>
+
 </body>
 </html>

@@ -24,6 +24,8 @@ public class NotificationController {
         notificationService.sendNotification(title, message);
     }
 
+
+
     @PutMapping("/mark-as-read/{id}")
     public void markNotificationAsRead(@PathVariable Long id) {
         notificationService.markAsRead(id);
@@ -32,5 +34,6 @@ public class NotificationController {
     public void markAllNotificationsAsRead() {
         notificationService.markAllAsRead();
     }
+
 
 }

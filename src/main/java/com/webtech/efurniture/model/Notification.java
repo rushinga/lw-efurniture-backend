@@ -3,6 +3,7 @@ package com.webtech.efurniture.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+
 @Entity
 public class Notification {
     @Id

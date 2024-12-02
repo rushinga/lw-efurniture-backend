@@ -1,9 +1,6 @@
 package com.webtech.efurniture.service;
 
-import com.webtech.efurniture.model.Furniture;
-import com.webtech.efurniture.model.Role;
-import com.webtech.efurniture.model.User;
-import com.webtech.efurniture.model.ResetToken;
+import com.webtech.efurniture.model.*;
 import com.webtech.efurniture.userRepository.ResetTokenRepository;
 import com.webtech.efurniture.userRepository.UserRepository;
 import jakarta.annotation.PostConstruct;
@@ -17,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -180,10 +178,10 @@ public class UserService {
         }
     }
 
-    @Transactional // Ensure transactional context
-    public void updateUser (User user) {
-        userRepository.save(user); // Save the updated user
-    }
+//    @Transactional // Ensure transactional context
+//    public void updateUser (User user) {
+//        userRepository.save(user); // Save the updated user
+//    }
 
     @Transactional // Ensure transactional context
     public void deleteUser(Long id) {
@@ -205,10 +203,18 @@ public class UserService {
     }
 
     public List<User> searchUsers(String username, String email) {
-        // Logic to search for users based on username and/or email
-        // This could involve querying the database with a repository method
-        return userRepository.findByUsernameContainingOrEmailContaining(username, email);
+        if (username != null && email != null) {
+            return userRepository.findByUsernameContainingOrEmailContaining(username, email);
+        } else if (username != null) {
+            return userRepository.findByUsernameContaining(username);
+        } else if (email != null) {
+            return userRepository.findByEmailContaining(email);
+        } else {
+            return new ArrayList<>();
+        }
     }
+
+
 
 
     // Add this method to your UserService
@@ -223,6 +229,29 @@ public class UserService {
 
     public List<User> getRecentUsers() {
         return userRepository.findTop5ByOrderByIdDesc();
+    }
+
+
+    public User updateUser(Long id, User user) {
+        // Check if user exists by ID
+        User existingUser = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+
+        // Update fields of the existing user
+        existingUser.setUsername(user.getUsername());
+        existingUser.setPassword(user.getPassword());
+        existingUser.setFirstName(user.getFirstName());
+        existingUser.setLastName(user.getLastName());
+        existingUser.setEmail(user.getEmail());
+        existingUser.setPhoneNumber(user.getPhoneNumber());
+        existingUser.setRole(user.getRole());
+
+        // Save the updated user to the database
+        return userRepository.save(existingUser);
+    }
+
+
+    public long countTotalUsers() {
+        return userRepository.count(); // Assuming you're using Spring Data JPA
     }
 
 
