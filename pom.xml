@@ -131,13 +131,21 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.webtech.efurniture</mainClass>
+							<mainClass>com.webtech.efurniture.EfurnitureApplication</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
 			</plugin>
+
+			<!-- Spring Boot Maven Plugin -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>3.1.4</version> <!-- Ensure it matches your Spring Boot version -->
+			</plugin>
 		</plugins>
 	</build>
+
 
 
 
