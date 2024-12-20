@@ -131,7 +131,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.example.MainClass</mainClass>
+							<mainClass>com.webtech.efurniture</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
