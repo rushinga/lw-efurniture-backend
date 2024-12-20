@@ -1,447 +1,447 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">-->
+<!--    <style>-->
 
-        /* Global Styles */
-:root {
-    --primary-color: #2c3e50;
-    --secondary-color: #34495e;
-    --accent-color: #3498db;
-    --danger-color: #e74c3c;
-    --success-color: #2ecc71;
-    --warning-color: #f1c40f;
-    --text-color: #2c3e50;
-    --light-gray: #ecf0f1;
-    --white: #ffffff;
-    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+<!--        /* Global Styles */-->
+<!--:root {-->
+<!--    &#45;&#45;primary-color: #2c3e50;-->
+<!--    &#45;&#45;secondary-color: #34495e;-->
+<!--    &#45;&#45;accent-color: #3498db;-->
+<!--    &#45;&#45;danger-color: #e74c3c;-->
+<!--    &#45;&#45;success-color: #2ecc71;-->
+<!--    &#45;&#45;warning-color: #f1c40f;-->
+<!--    &#45;&#45;text-color: #2c3e50;-->
+<!--    &#45;&#45;light-gray: #ecf0f1;-->
+<!--    &#45;&#45;white: #ffffff;-->
+<!--    &#45;&#45;shadow: 0 2px 4px rgba(0, 0, 0, 0.1);-->
+<!--}-->
 
-body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background-color: #f5f6fa;
-    margin: 0;
-    padding: 0;
-    color: var(--text-color);
-}
+<!--body {-->
+<!--    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;-->
+<!--    background-color: #f5f6fa;-->
+<!--    margin: 0;-->
+<!--    padding: 0;-->
+<!--    color: var(&#45;&#45;text-color);-->
+<!--}-->
 
-/* Navbar Styles */
-.navbar {
-    background-color: var(--white);
-    box-shadow: var(--shadow);
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+<!--/* Navbar Styles */-->
+<!--.navbar {-->
+<!--    background-color: var(&#45;&#45;white);-->
+<!--    box-shadow: var(&#45;&#45;shadow);-->
+<!--    padding: 1rem 2rem;-->
+<!--    display: flex;-->
+<!--    align-items: center;-->
+<!--    justify-content: space-between;-->
+<!--    position: sticky;-->
+<!--    top: 0;-->
+<!--    z-index: 1000;-->
+<!--}-->
 
-.brand {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
+<!--.brand {-->
+<!--    color: var(&#45;&#45;primary-color);-->
+<!--    font-size: 1.5rem;-->
+<!--    font-weight: bold;-->
+<!--    text-decoration: none;-->
+<!--    display: flex;-->
+<!--    align-items: center;-->
+<!--    gap: 0.5rem;-->
+<!--}-->
 
-.brand:hover {
-    color: var(--accent-color);
-    text-decoration: none;
-}
+<!--.brand:hover {-->
+<!--    color: var(&#45;&#45;accent-color);-->
+<!--    text-decoration: none;-->
+<!--}-->
 
-.nav-links {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-}
+<!--.nav-links {-->
+<!--    display: flex;-->
+<!--    gap: 1.5rem;-->
+<!--    align-items: center;-->
+<!--}-->
 
-.nav-link {
-    color: var(--secondary-color);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    position: relative;
-    transition: all 0.3s ease;
-}
+<!--.nav-link {-->
+<!--    color: var(&#45;&#45;secondary-color);-->
+<!--    text-decoration: none;-->
+<!--    padding: 0.5rem 1rem;-->
+<!--    border-radius: 8px;-->
+<!--    display: flex;-->
+<!--    align-items: center;-->
+<!--    gap: 0.5rem;-->
+<!--    position: relative;-->
+<!--    transition: all 0.3s ease;-->
+<!--}-->
 
-.nav-link:hover {
-    background-color: var(--light-gray);
-    color: var(--accent-color);
-    text-decoration: none;
-}
+<!--.nav-link:hover {-->
+<!--    background-color: var(&#45;&#45;light-gray);-->
+<!--    color: var(&#45;&#45;accent-color);-->
+<!--    text-decoration: none;-->
+<!--}-->
 
-.nav-link.active {
-    background-color: var(--accent-color);
-    color: var(--white);
-}
+<!--.nav-link.active {-->
+<!--    background-color: var(&#45;&#45;accent-color);-->
+<!--    color: var(&#45;&#45;white);-->
+<!--}-->
 
-.notification-badge {
-    background-color: var(--danger-color);
-    color: white;
-    padding: 0.2rem 0.6rem;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    margin-left: 0.5rem;
-}
+<!--.notification-badge {-->
+<!--    background-color: var(&#45;&#45;danger-color);-->
+<!--    color: white;-->
+<!--    padding: 0.2rem 0.6rem;-->
+<!--    border-radius: 12px;-->
+<!--    font-size: 0.8rem;-->
+<!--    margin-left: 0.5rem;-->
+<!--}-->
 
-/* Right Section Styles */
-.right-section {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
+<!--/* Right Section Styles */-->
+<!--.right-section {-->
+<!--    display: flex;-->
+<!--    align-items: center;-->
+<!--    gap: 1.5rem;-->
+<!--}-->
 
-.language-switch {
-    padding: 0.5rem;
-    border: 1px solid var(--light-gray);
-    border-radius: 6px;
-    background-color: var(--white);
-    color: var(--text-color);
-}
+<!--.language-switch {-->
+<!--    padding: 0.5rem;-->
+<!--    border: 1px solid var(&#45;&#45;light-gray);-->
+<!--    border-radius: 6px;-->
+<!--    background-color: var(&#45;&#45;white);-->
+<!--    color: var(&#45;&#45;text-color);-->
+<!--}-->
 
-/* Profile Dropdown Styles */
-.profile-section {
-    position: relative;
-}
+<!--/* Profile Dropdown Styles */-->
+<!--.profile-section {-->
+<!--    position: relative;-->
+<!--}-->
 
-.profile-icon {
-    width: 40px;
-    height: 40px;
-    background-color: var(--light-gray);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+<!--.profile-icon {-->
+<!--    width: 40px;-->
+<!--    height: 40px;-->
+<!--    background-color: var(&#45;&#45;light-gray);-->
+<!--    border-radius: 50%;-->
+<!--    display: flex;-->
+<!--    align-items: center;-->
+<!--    justify-content: center;-->
+<!--    cursor: pointer;-->
+<!--    transition: background-color 0.3s ease;-->
+<!--}-->
 
-.profile-icon:hover {
-    background-color: var(--accent-color);
-    color: var(--white);
-}
+<!--.profile-icon:hover {-->
+<!--    background-color: var(&#45;&#45;accent-color);-->
+<!--    color: var(&#45;&#45;white);-->
+<!--}-->
 
-.profile-dropdown:hover .dropdown-content {
-    display: block;
-}
+<!--.profile-dropdown:hover .dropdown-content {-->
+<!--    display: block;-->
+<!--}-->
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 100%;
-    background-color: var(--white);
-    min-width: 200px;
-    box-shadow: var(--shadow);
-    border-radius: 8px;
-    padding: 0.5rem 0;
-    margin-top: 0.5rem;
-}
+<!--.dropdown-content {-->
+<!--    display: none;-->
+<!--    position: absolute;-->
+<!--    right: 0;-->
+<!--    top: 100%;-->
+<!--    background-color: var(&#45;&#45;white);-->
+<!--    min-width: 200px;-->
+<!--    box-shadow: var(&#45;&#45;shadow);-->
+<!--    border-radius: 8px;-->
+<!--    padding: 0.5rem 0;-->
+<!--    margin-top: 0.5rem;-->
+<!--}-->
 
-.dropdown-item {
-    color: var(--text-color);
-    padding: 0.75rem 1rem;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    transition: background-color 0.3s ease;
-}
+<!--.dropdown-item {-->
+<!--    color: var(&#45;&#45;text-color);-->
+<!--    padding: 0.75rem 1rem;-->
+<!--    text-decoration: none;-->
+<!--    display: flex;-->
+<!--    align-items: center;-->
+<!--    gap: 0.75rem;-->
+<!--    transition: background-color 0.3s ease;-->
+<!--}-->
 
-.dropdown-item:hover {
-    background-color: var(--light-gray);
-    color: var(--accent-color);
-    text-decoration: none;
-}
+<!--.dropdown-item:hover {-->
+<!--    background-color: var(&#45;&#45;light-gray);-->
+<!--    color: var(&#45;&#45;accent-color);-->
+<!--    text-decoration: none;-->
+<!--}-->
 
-.dropdown-divider {
-    height: 1px;
-    background-color: var(--light-gray);
-    margin: 0.5rem 0;
-}
+<!--.dropdown-divider {-->
+<!--    height: 1px;-->
+<!--    background-color: var(&#45;&#45;light-gray);-->
+<!--    margin: 0.5rem 0;-->
+<!--}-->
 
-/* Main Content Styles */
-.main-content {
-    padding: 2rem;
-}
+<!--/* Main Content Styles */-->
+<!--.main-content {-->
+<!--    padding: 2rem;-->
+<!--}-->
 
-/* Table Styles */
-.table {
-    background-color: var(--white);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-}
+<!--/* Table Styles */-->
+<!--.table {-->
+<!--    background-color: var(&#45;&#45;white);-->
+<!--    border-radius: 8px;-->
+<!--    overflow: hidden;-->
+<!--    box-shadow: var(&#45;&#45;shadow);-->
+<!--}-->
 
-.table-dark {
-    background-color: var(--primary-color);
-}
+<!--.table-dark {-->
+<!--    background-color: var(&#45;&#45;primary-color);-->
+<!--}-->
 
-.table th {
-    font-weight: 600;
-    padding: 1rem;
-}
+<!--.table th {-->
+<!--    font-weight: 600;-->
+<!--    padding: 1rem;-->
+<!--}-->
 
-.table td {
-    padding: 1rem;
-    vertical-align: middle;
-}
+<!--.table td {-->
+<!--    padding: 1rem;-->
+<!--    vertical-align: middle;-->
+<!--}-->
 
-.table th a {
-    color: var(--white);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
+<!--.table th a {-->
+<!--    color: var(&#45;&#45;white);-->
+<!--    text-decoration: none;-->
+<!--    display: flex;-->
+<!--    align-items: center;-->
+<!--    gap: 0.5rem;-->
+<!--}-->
 
-.table th a:hover {
-    color: var(--light-gray);
-}
+<!--.table th a:hover {-->
+<!--    color: var(&#45;&#45;light-gray);-->
+<!--}-->
 
-/* Button Styles */
-.btn {
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
+<!--/* Button Styles */-->
+<!--.btn {-->
+<!--    padding: 0.5rem 1rem;-->
+<!--    border-radius: 6px;-->
+<!--    font-weight: 500;-->
+<!--    transition: all 0.3s ease;-->
+<!--}-->
 
-.btn-primary {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
-}
+<!--.btn-primary {-->
+<!--    background-color: var(&#45;&#45;accent-color);-->
+<!--    border-color: var(&#45;&#45;accent-color);-->
+<!--}-->
 
-.btn-primary:hover {
-    background-color: #2980b9;
-    border-color: #2980b9;
-}
+<!--.btn-primary:hover {-->
+<!--    background-color: #2980b9;-->
+<!--    border-color: #2980b9;-->
+<!--}-->
 
-.btn-success {
-    background-color: var(--success-color);
-    border-color: var(--success-color);
-}
+<!--.btn-success {-->
+<!--    background-color: var(&#45;&#45;success-color);-->
+<!--    border-color: var(&#45;&#45;success-color);-->
+<!--}-->
 
-.btn-success:hover {
-    background-color: #27ae60;
-    border-color: #27ae60;
-}
+<!--.btn-success:hover {-->
+<!--    background-color: #27ae60;-->
+<!--    border-color: #27ae60;-->
+<!--}-->
 
-.btn-warning {
-    background-color: var(--warning-color);
-    border-color: var(--warning-color);
-    color: var(--text-color);
-}
+<!--.btn-warning {-->
+<!--    background-color: var(&#45;&#45;warning-color);-->
+<!--    border-color: var(&#45;&#45;warning-color);-->
+<!--    color: var(&#45;&#45;text-color);-->
+<!--}-->
 
-.btn-warning:hover {
-    background-color: #f39c12;
-    border-color: #f39c12;
-}
+<!--.btn-warning:hover {-->
+<!--    background-color: #f39c12;-->
+<!--    border-color: #f39c12;-->
+<!--}-->
 
-.btn-danger {
-    background-color: var(--danger-color);
-    border-color: var(--danger-color);
-}
+<!--.btn-danger {-->
+<!--    background-color: var(&#45;&#45;danger-color);-->
+<!--    border-color: var(&#45;&#45;danger-color);-->
+<!--}-->
 
-.btn-danger:hover {
-    background-color: #c0392b;
-    border-color: #c0392b;
-}
+<!--.btn-danger:hover {-->
+<!--    background-color: #c0392b;-->
+<!--    border-color: #c0392b;-->
+<!--}-->
 
-/* Pagination Styles */
-.pagination {
-    margin-top: 2rem;
-}
+<!--/* Pagination Styles */-->
+<!--.pagination {-->
+<!--    margin-top: 2rem;-->
+<!--}-->
 
-.page-link {
-    color: var(--accent-color);
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--light-gray);
-}
+<!--.page-link {-->
+<!--    color: var(&#45;&#45;accent-color);-->
+<!--    padding: 0.5rem 1rem;-->
+<!--    border: 1px solid var(&#45;&#45;light-gray);-->
+<!--}-->
 
-.page-item.active .page-link {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
-}
+<!--.page-item.active .page-link {-->
+<!--    background-color: var(&#45;&#45;accent-color);-->
+<!--    border-color: var(&#45;&#45;accent-color);-->
+<!--}-->
 
-.page-item.disabled .page-link {
-    color: #6c757d;
-    pointer-events: none;
-    background-color: var(--white);
-}
+<!--.page-item.disabled .page-link {-->
+<!--    color: #6c757d;-->
+<!--    pointer-events: none;-->
+<!--    background-color: var(&#45;&#45;white);-->
+<!--}-->
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        padding: 1rem;
-    }
+<!--/* Responsive Design */-->
+<!--@media (max-width: 768px) {-->
+<!--    .navbar {-->
+<!--        flex-direction: column;-->
+<!--        padding: 1rem;-->
+<!--    }-->
 
-    .nav-links {
-        flex-direction: column;
-        width: 100%;
-        margin: 1rem 0;
-    }
+<!--    .nav-links {-->
+<!--        flex-direction: column;-->
+<!--        width: 100%;-->
+<!--        margin: 1rem 0;-->
+<!--    }-->
 
-    .right-section {
-        width: 100%;
-        justify-content: center;
-        margin-top: 1rem;
-    }
+<!--    .right-section {-->
+<!--        width: 100%;-->
+<!--        justify-content: center;-->
+<!--        margin-top: 1rem;-->
+<!--    }-->
 
-    .table {
-        display: block;
-        overflow-x: auto;
-    }
-}
+<!--    .table {-->
+<!--        display: block;-->
+<!--        overflow-x: auto;-->
+<!--    }-->
+<!--}-->
 
-    </style>
-</head>
-<body>
-<nav class="navbar">
-    <a th:href="@{/admin}" class="brand">
-<!--        <i class="fas fa-couch"></i>-->
-        e-Furniture Admin
-    </a>
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<nav class="navbar">-->
+<!--    <a th:href="@{/admin}" class="brand">-->
+<!--&lt;!&ndash;        <i class="fas fa-couch"></i>&ndash;&gt;-->
+<!--        e-Furniture Admin-->
+<!--    </a>-->
 
-    <div class="nav-links">
-        <a th:href="@{/admin/users}" class="nav-link" th:classappend="${active == 'users'} ? 'active' : ''">
-            <i class="fas fa-users"></i>
-            <span>Users</span>
-        </a>
-        <a th:href="@{/admin/furniture}" class="nav-link" th:classappend="${active == 'furniture'} ? 'active' : ''">
-            <i class="fas fa-couch"></i>
-            <span>Furniture</span>
-        </a>
-        <a th:href="@{/admin/orders}" class="nav-link" th:classappend="${active == 'orders'} ? 'active' : ''">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Orders</span>
-<!--            <span class="notification-badge">5</span>-->
-        </a>
-        <a th:href="@{/admin/notifications}" class="nav-link" th:classappend="${active == 'notifications'} ? 'active' : ''">
-            <i class="fas fa-bell"></i>
-            <span>Notifications</span>
-<!--            <span class="notification-badge">3</span>-->
-        </a>
-        <a th:href="@{/admin/analytics}" class="nav-link" th:classappend="${active == 'analytics'} ? 'active' : ''">
-            <i class="fas fa-chart-line"></i>
-            <span>Analytics</span>
-        </a>
-    </div>
+<!--    <div class="nav-links">-->
+<!--        <a th:href="@{/admin/users}" class="nav-link" th:classappend="${active == 'users'} ? 'active' : ''">-->
+<!--            <i class="fas fa-users"></i>-->
+<!--            <span>Users</span>-->
+<!--        </a>-->
+<!--        <a th:href="@{/admin/furniture}" class="nav-link" th:classappend="${active == 'furniture'} ? 'active' : ''">-->
+<!--            <i class="fas fa-couch"></i>-->
+<!--            <span>Furniture</span>-->
+<!--        </a>-->
+<!--        <a th:href="@{/admin/orders}" class="nav-link" th:classappend="${active == 'orders'} ? 'active' : ''">-->
+<!--            <i class="fas fa-shopping-cart"></i>-->
+<!--            <span>Orders</span>-->
+<!--&lt;!&ndash;            <span class="notification-badge">5</span>&ndash;&gt;-->
+<!--        </a>-->
+<!--        <a th:href="@{/admin/notifications}" class="nav-link" th:classappend="${active == 'notifications'} ? 'active' : ''">-->
+<!--            <i class="fas fa-bell"></i>-->
+<!--            <span>Notifications</span>-->
+<!--&lt;!&ndash;            <span class="notification-badge">3</span>&ndash;&gt;-->
+<!--        </a>-->
+<!--        <a th:href="@{/admin/analytics}" class="nav-link" th:classappend="${active == 'analytics'} ? 'active' : ''">-->
+<!--            <i class="fas fa-chart-line"></i>-->
+<!--            <span>Analytics</span>-->
+<!--        </a>-->
+<!--    </div>-->
 
-    <div class="right-section">
-        <select class="language-switch" id="languageSelect" th:onchange="|changeLanguage(this.value)|">
-            <option value="en" th:selected="${language == 'en'}">English</option>
-            <option value="es" th:selected="${language == 'es'}">Español</option>
-            <option value="fr" th:selected="${language == 'fr'}">Français</option>
-        </select>
+<!--    <div class="right-section">-->
+<!--        <select class="language-switch" id="languageSelect" th:onchange="|changeLanguage(this.value)|">-->
+<!--            <option value="en" th:selected="${language == 'en'}">English</option>-->
+<!--            <option value="es" th:selected="${language == 'es'}">Español</option>-->
+<!--            <option value="fr" th:selected="${language == 'fr'}">Français</option>-->
+<!--        </select>-->
 
-        <a th:href="@{/logout}" class="dropdown-item">
-            <i class="fas fa-sign-out-alt"></i>
-            Logout
-        </a>
-        <div class="profile-section">
-            <div class="profile-dropdown">
-                <div class="profile-icon">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="dropdown-content">
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-user-circle"></i>
-                        My Profile
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-cog"></i>
-                        Settings
-                    </a>
-                    <!--                    <div class="dropdown-divider"></div>-->
-                    <!--                    <a th:href="@{/logout}" class="dropdown-item">-->
-                    <!--                        <i class="fas fa-sign-out-alt"></i>-->
-                    <!--                        Logout-->
-                    <!--                    </a>-->
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
-<main class="main-content">
-    <div class="container">
-        <h1 class="mb-4">Welcome to the Admin Dashboard</h1>
+<!--        <a th:href="@{/logout}" class="dropdown-item">-->
+<!--            <i class="fas fa-sign-out-alt"></i>-->
+<!--            Logout-->
+<!--        </a>-->
+<!--        <div class="profile-section">-->
+<!--            <div class="profile-dropdown">-->
+<!--                <div class="profile-icon">-->
+<!--                    <i class="fas fa-user"></i>-->
+<!--                </div>-->
+<!--                <div class="dropdown-content">-->
+<!--                    <a href="#" class="dropdown-item">-->
+<!--                        <i class="fas fa-user-circle"></i>-->
+<!--                        My Profile-->
+<!--                    </a>-->
+<!--                    <a href="#" class="dropdown-item">-->
+<!--                        <i class="fas fa-cog"></i>-->
+<!--                        Settings-->
+<!--                    </a>-->
+<!--                    &lt;!&ndash;                    <div class="dropdown-divider"></div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <a th:href="@{/logout}" class="dropdown-item">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <i class="fas fa-sign-out-alt"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        Logout&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </a>&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--<main class="main-content">-->
+<!--    <div class="container">-->
+<!--        <h1 class="mb-4">Welcome to the Admin Dashboard</h1>-->
 
-        <div class="row mb-4">
-            <div class="col-md-4">
-                <div class="card text-white bg-primary mb-3">
-                    <div class="card-header">Total Users</div>
-                    <div class="card-body">
-                        <h5 class="card-title">150</h5>
-                        <p class="card-text">Total registered users in the system.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card text-white bg-success mb-3">
-                    <div class="card-header">Total Orders</div>
-                    <div class="card-body">
-                        <h5 class="card-title">75</h5>
-                        <p class="card-text">Total orders placed this month.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card text-white bg-warning mb-3">
-                    <div class="card-header">Pending Orders</div>
-                    <div class="card-body">
-                        <h5 class="card-title">5</h5>
-                        <p class="card-text">Orders that are pending processing.</p> </div> </div> </div> </div>
+<!--        <div class="row mb-4">-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="card text-white bg-primary mb-3">-->
+<!--                    <div class="card-header">Total Users</div>-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title">150</h5>-->
+<!--                        <p class="card-text">Total registered users in the system.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="card text-white bg-success mb-3">-->
+<!--                    <div class="card-header">Total Orders</div>-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title">75</h5>-->
+<!--                        <p class="card-text">Total orders placed this month.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="card text-white bg-warning mb-3">-->
+<!--                    <div class="card-header">Pending Orders</div>-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title">5</h5>-->
+<!--                        <p class="card-text">Orders that are pending processing.</p> </div> </div> </div> </div>-->
 
-        <h2 class="mb-4">Recent Activity</h2>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Action</th>
-                <th scope="col">User</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>2024-11-03 10:00</td>
-                <td>Login</td>
-                <td>Admin</td>
-            </tr>
-            <tr>
-                <td>2024-11-03 09:30</td>
-                <td>Order Placed</td>
-                <td>User123</td>
-            </tr>
-            </tbody>
-        </table>
+<!--        <h2 class="mb-4">Recent Activity</h2>-->
+<!--        <table class="table table-striped">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th scope="col">Date</th>-->
+<!--                <th scope="col">Action</th>-->
+<!--                <th scope="col">User</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr>-->
+<!--                <td>2024-11-03 10:00</td>-->
+<!--                <td>Login</td>-->
+<!--                <td>Admin</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>2024-11-03 09:30</td>-->
+<!--                <td>Order Placed</td>-->
+<!--                <td>User123</td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
 
-        <h2 class="mb-4">Quick Actions</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <a th:href="@{/admin/users}" class="btn btn-primary btn-block">Manage Users</a>
-            </div>
-            <div class="col-md-4">
-                <a href="#" class="btn btn-success btn-block">Manage Orders</a>
-            </div>
-            <div class="col-md-4">
-                <a href="#" class="btn btn-warning btn-block">Manage Products</a>
-            </div>
-        </div>
-    </div>
+<!--        <h2 class="mb-4">Quick Actions</h2>-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-4">-->
+<!--                <a th:href="@{/admin/users}" class="btn btn-primary btn-block">Manage Users</a>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <a href="#" class="btn btn-success btn-block">Manage Orders</a>-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <a href="#" class="btn btn-warning btn-block">Manage Products</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
-</main>
-</body>
-</html>
+<!--</main>-->
+<!--</body>-->
+<!--</html>-->

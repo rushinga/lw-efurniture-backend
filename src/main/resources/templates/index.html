@@ -1,187 +1,187 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Light of the World Furniture</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}" />
-</head>
-<body>
-<header>
-    <div class="banner">Get free delivery on orders over 100k rwf</div>
-    <nav>
-        <div id="logo">
-            Light of the World <br />
-            Furniture
-        </div>
-        <ul class="navigation-menu">
-            <li>
-                <a th:href="@{/home}">Home</a>
-            </li>
-            <li><a th:href="'#products'">Products</a></li>
-            <li><a th:href="'#about-us'">About us</a></li>
-            <li><a th:href="'#contact-info'">Contact</a></li>
-        </ul>
-
-        <div id="utility">
-            <button class="button-86" th:onclick="'window.location.href=\'/login\''">Login</button>
-            <button class="button-86" th:onclick="'window.location.href=\'/register\''">Get Started</button>
-
-        </div>
-    </nav>
-</header>
-
-<section class="hero">
-    <h1>Your One-Stop Shop for Every Furniture Need!</h1>
-
-        <button class="button-52" th:onclick="'window.location.href=\'/e-showroom\''">Visit Our e-Showroom</button>
-
-</section>
-
-<section id="products">
-    <h2>Our Furniture Services</h2>
-    <p class="section-description">Explore our range of services designed to transform your living spaces into beautiful, functional areas that reflect your style and needs.</p>
-    <ul class="services">
-        <li class="card-large" id="serv-design">
-            <div class="card-image">
-                <img src="/img/chairandtable.png" alt="Furniture Design" />
-            </div>
-            <div class="card-content">
-                <h3>Furniture Design</h3>
-                <span class="subtitle">Creating spaces that reflect your style.</span>
-                <ul>
-                    <li><a href="#">Living Room Design</a><span>$500</span></li>
-                    <li><a href="#">Bedroom Design</a><span>$400</span></li>
-                    <li><a href="#">Office Space Design</a><span>$600</span></li>
-                </ul>
-                <button class="btn-filled-dark">Book Now</button>
-            </div>
-        </li>
-        <li class="card-large" id="serv-custom">
-            <div class="card-image">
-                <img src="/img/sofa.png" alt="Custom Furniture" />
-            </div>
-            <div class="card-content">
-                <h3>Custom Furniture</h3>
-                <span class="subtitle">Tailored solutions for your unique needs.</span>
-                <ul>
-                    <li><a href="#">Bespoke Tables</a><span>$700</span></li>
-                    <li><a href="#">Custom Chairs</a><span>$300</span></li>
-                    <li><a href="#">Storage Solutions</a><span>$450</span></li>
-                </ul>
-                <button class="btn-filled-dark">Book Now</button>
-            </div>
-        </li>
-
-        </li>
-        <li class="card-large" id="serv-repair">
-            <div class="card-image">
-                <img src="/img/allfurni.png" alt="Furniture Repair" />
-            </div>
-            <div class="card-content">
-                <h3>Furniture Repair</h3>
-                <span class="subtitle">Restore your furniture to its former glory.</span>
-                <ul>
-                    <li><a href="#">Wood Repair</a><span>$250</span></li>
-                    <li><a href="#">Refinishing Services</a><span>$300</span></li>
-                    <li><a href="#">Structural Repairs</a><span>$400</span></li>
-                </ul>
-                <button class="btn-filled-dark">Book Now</button>
-            </div>
-        </li>
-    </ul>
-</section>
-
-
-<section id="testimonials">
-    <h2>What Our Clients Say</h2>
-    <p class="section-description">Hear from our satisfied customers who have transformed their spaces with our furniture services.</p>
-    <div class="testimonial-container">
-        <div class="testimonial-card">
-            <div class="testimonial-image">
-                <img src="/img/kuwa.jpg" alt="Client 1" />
-            </div>
-            <div class="testimonial-content">
-                <p class="quote">"The furniture design service completely transformed my living room! I couldn't be happier with the results."</p>
-                <h4 class="client-name">Sarah Johnson</h4>
-                <span class="client-role">Homeowner</span>
-            </div>
-        </div>
-        <div class="testimonial-card">
-            <div class="testimonial-image">
-                <img src="/img/sam.jpg" alt="Client 2" />
-            </div>
-            <div class="testimonial-content">
-                <p class="quote">"Custom furniture that fits my style perfectly! The team was professional and attentive to my needs."</p>
-                <h4 class="client-name">Michael Smith</h4>
-                <span class="client-role">Interior Designer</span>
-            </div>
-        </div>
-        <div class="testimonial-card">
-            <div class="testimonial-image">
-                <img src="/img/dudu.jpg" alt="Client 3" />
-            </div>
-            <div class="testimonial-content">
-                <p class="quote">"I love my new sofa! The upholstery service was top-notch, and the quality is outstanding."</p>
-                <h4 class="client-name">Emily Davis</h4>
-                <span class="client-role">Business Owner</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section id="about-us">
-    <div class="about-container">
-        <h2>About Us</h2>
-        <p class="vision">
-            Our mission is to provide top-quality products while striving to reduce our environmental impact. We believe in innovation, sustainability, and commitment to creating a better future for the planet.
-        </p>
-        <div class="team-section">
-            <h3>Meet Our Team</h3>
-            <div class="team-members">
-                <div class="team-member">
-                    <h4>Ashimwe Cedrick</h4>
-                    <p>CEO & Founder</p>
-                    <p>Cedrick is the visionary behind our company, with a passion for sustainable business practices and innovation.</p>
-                </div>
-                <div class="team-member">
-                    <h4>Igabamahoro Jehovanis</h4>
-                    <p>Chief Product Officer</p>
-                    <p>Jehovanis leads the product development team, ensuring every product meets the highest standards of quality.</p>
-                </div>
-                <div class="team-member">
-                    <h4>Bucyukundi Jonathan</h4>
-                    <p>Head of Sustainability</p>
-                    <p>Jonathan is committed to environmental sustainability, making sure our processes are eco-friendly and impactful.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="contact-info">
-    <div class="contact-container">
-        <h2>Contact Information</h2>
-        <p>Our dedicated team is here to assist you with any inquiries or support you may need. Feel free to reach out to us for any questions or concerns regarding our products and services.</p>
-        <div class="contact-details">
-            <p><strong>Email:</strong> <a th:href="@{mailto:cedricashimwe@gmail.com}">cedricashimwe@gmail.com</a></p>
-            <p><strong>Phone:</strong> <a href="tel:+250781556345">(250) 781 556 345</a></p>
-            <p><strong>Address:</strong> KG 309 ST, Gisozi, Kigali</p>
-        </div>
-
-<!--        <div class="btn-group">-->
-<!--            <button class="btn-filled-dark">Contact Us</button>-->
-<!--            <button class="btn-outline-dark btn-hover-color">Leave Feedback</button>-->
+<!--<head>-->
+<!--    <meta charset="UTF-8" />-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+<!--    <title>Light of the World Furniture</title>-->
+<!--    <link rel="stylesheet" th:href="@{/css/styles.css}" />-->
+<!--</head>-->
+<!--<body>-->
+<!--<header>-->
+<!--    <div class="banner">Get free delivery on orders over 100k rwf</div>-->
+<!--    <nav>-->
+<!--        <div id="logo">-->
+<!--            Light of the World <br />-->
+<!--            Furniture-->
 <!--        </div>-->
-    </div>
-</section>
+<!--        <ul class="navigation-menu">-->
+<!--            <li>-->
+<!--                <a th:href="@{/home}">Home</a>-->
+<!--            </li>-->
+<!--            <li><a th:href="'#products'">Products</a></li>-->
+<!--            <li><a th:href="'#about-us'">About us</a></li>-->
+<!--            <li><a th:href="'#contact-info'">Contact</a></li>-->
+<!--        </ul>-->
 
-<!-- Footer -->
-<footer class="footer">
-    <p class="footer__text">Created by <a href="https://www.linkedin.com/in/ashimwe-cedrick" target="_blank" rel="noopener">Ashimwe Rushinga Cedrick</a> &copy; 2024 Your Furniture Company</p>
+<!--        <div id="utility">-->
+<!--            <button class="button-86" th:onclick="'window.location.href=\'/login\''">Login</button>-->
+<!--            <button class="button-86" th:onclick="'window.location.href=\'/register\''">Get Started</button>-->
 
-</footer>
-</body>
-</html>
+<!--        </div>-->
+<!--    </nav>-->
+<!--</header>-->
+
+<!--<section class="hero">-->
+<!--    <h1>Your One-Stop Shop for Every Furniture Need!</h1>-->
+
+<!--        <button class="button-52" th:onclick="'window.location.href=\'/e-showroom\''">Visit Our e-Showroom</button>-->
+
+<!--</section>-->
+
+<!--<section id="products">-->
+<!--    <h2>Our Furniture Services</h2>-->
+<!--    <p class="section-description">Explore our range of services designed to transform your living spaces into beautiful, functional areas that reflect your style and needs.</p>-->
+<!--    <ul class="services">-->
+<!--        <li class="card-large" id="serv-design">-->
+<!--            <div class="card-image">-->
+<!--                <img src="/img/chairandtable.png" alt="Furniture Design" />-->
+<!--            </div>-->
+<!--            <div class="card-content">-->
+<!--                <h3>Furniture Design</h3>-->
+<!--                <span class="subtitle">Creating spaces that reflect your style.</span>-->
+<!--                <ul>-->
+<!--                    <li><a href="#">Living Room Design</a><span>$500</span></li>-->
+<!--                    <li><a href="#">Bedroom Design</a><span>$400</span></li>-->
+<!--                    <li><a href="#">Office Space Design</a><span>$600</span></li>-->
+<!--                </ul>-->
+<!--                <button class="btn-filled-dark">Book Now</button>-->
+<!--            </div>-->
+<!--        </li>-->
+<!--        <li class="card-large" id="serv-custom">-->
+<!--            <div class="card-image">-->
+<!--                <img src="/img/sofa.png" alt="Custom Furniture" />-->
+<!--            </div>-->
+<!--            <div class="card-content">-->
+<!--                <h3>Custom Furniture</h3>-->
+<!--                <span class="subtitle">Tailored solutions for your unique needs.</span>-->
+<!--                <ul>-->
+<!--                    <li><a href="#">Bespoke Tables</a><span>$700</span></li>-->
+<!--                    <li><a href="#">Custom Chairs</a><span>$300</span></li>-->
+<!--                    <li><a href="#">Storage Solutions</a><span>$450</span></li>-->
+<!--                </ul>-->
+<!--                <button class="btn-filled-dark">Book Now</button>-->
+<!--            </div>-->
+<!--        </li>-->
+
+<!--        </li>-->
+<!--        <li class="card-large" id="serv-repair">-->
+<!--            <div class="card-image">-->
+<!--                <img src="/img/allfurni.png" alt="Furniture Repair" />-->
+<!--            </div>-->
+<!--            <div class="card-content">-->
+<!--                <h3>Furniture Repair</h3>-->
+<!--                <span class="subtitle">Restore your furniture to its former glory.</span>-->
+<!--                <ul>-->
+<!--                    <li><a href="#">Wood Repair</a><span>$250</span></li>-->
+<!--                    <li><a href="#">Refinishing Services</a><span>$300</span></li>-->
+<!--                    <li><a href="#">Structural Repairs</a><span>$400</span></li>-->
+<!--                </ul>-->
+<!--                <button class="btn-filled-dark">Book Now</button>-->
+<!--            </div>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</section>-->
+
+
+<!--<section id="testimonials">-->
+<!--    <h2>What Our Clients Say</h2>-->
+<!--    <p class="section-description">Hear from our satisfied customers who have transformed their spaces with our furniture services.</p>-->
+<!--    <div class="testimonial-container">-->
+<!--        <div class="testimonial-card">-->
+<!--            <div class="testimonial-image">-->
+<!--                <img src="/img/kuwa.jpg" alt="Client 1" />-->
+<!--            </div>-->
+<!--            <div class="testimonial-content">-->
+<!--                <p class="quote">"The furniture design service completely transformed my living room! I couldn't be happier with the results."</p>-->
+<!--                <h4 class="client-name">Sarah Johnson</h4>-->
+<!--                <span class="client-role">Homeowner</span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="testimonial-card">-->
+<!--            <div class="testimonial-image">-->
+<!--                <img src="/img/sam.jpg" alt="Client 2" />-->
+<!--            </div>-->
+<!--            <div class="testimonial-content">-->
+<!--                <p class="quote">"Custom furniture that fits my style perfectly! The team was professional and attentive to my needs."</p>-->
+<!--                <h4 class="client-name">Michael Smith</h4>-->
+<!--                <span class="client-role">Interior Designer</span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="testimonial-card">-->
+<!--            <div class="testimonial-image">-->
+<!--                <img src="/img/dudu.jpg" alt="Client 3" />-->
+<!--            </div>-->
+<!--            <div class="testimonial-content">-->
+<!--                <p class="quote">"I love my new sofa! The upholstery service was top-notch, and the quality is outstanding."</p>-->
+<!--                <h4 class="client-name">Emily Davis</h4>-->
+<!--                <span class="client-role">Business Owner</span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+
+<!--<section id="about-us">-->
+<!--    <div class="about-container">-->
+<!--        <h2>About Us</h2>-->
+<!--        <p class="vision">-->
+<!--            Our mission is to provide top-quality products while striving to reduce our environmental impact. We believe in innovation, sustainability, and commitment to creating a better future for the planet.-->
+<!--        </p>-->
+<!--        <div class="team-section">-->
+<!--            <h3>Meet Our Team</h3>-->
+<!--            <div class="team-members">-->
+<!--                <div class="team-member">-->
+<!--                    <h4>Ashimwe Cedrick</h4>-->
+<!--                    <p>CEO & Founder</p>-->
+<!--                    <p>Cedrick is the visionary behind our company, with a passion for sustainable business practices and innovation.</p>-->
+<!--                </div>-->
+<!--                <div class="team-member">-->
+<!--                    <h4>Igabamahoro Jehovanis</h4>-->
+<!--                    <p>Chief Product Officer</p>-->
+<!--                    <p>Jehovanis leads the product development team, ensuring every product meets the highest standards of quality.</p>-->
+<!--                </div>-->
+<!--                <div class="team-member">-->
+<!--                    <h4>Bucyukundi Jonathan</h4>-->
+<!--                    <p>Head of Sustainability</p>-->
+<!--                    <p>Jonathan is committed to environmental sustainability, making sure our processes are eco-friendly and impactful.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--<section id="contact-info">-->
+<!--    <div class="contact-container">-->
+<!--        <h2>Contact Information</h2>-->
+<!--        <p>Our dedicated team is here to assist you with any inquiries or support you may need. Feel free to reach out to us for any questions or concerns regarding our products and services.</p>-->
+<!--        <div class="contact-details">-->
+<!--            <p><strong>Email:</strong> <a th:href="@{mailto:cedricashimwe@gmail.com}">cedricashimwe@gmail.com</a></p>-->
+<!--            <p><strong>Phone:</strong> <a href="tel:+250781556345">(250) 781 556 345</a></p>-->
+<!--            <p><strong>Address:</strong> KG 309 ST, Gisozi, Kigali</p>-->
+<!--        </div>-->
+
+<!--&lt;!&ndash;        <div class="btn-group">&ndash;&gt;-->
+<!--&lt;!&ndash;            <button class="btn-filled-dark">Contact Us</button>&ndash;&gt;-->
+<!--&lt;!&ndash;            <button class="btn-outline-dark btn-hover-color">Leave Feedback</button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<!--<footer class="footer">-->
+<!--    <p class="footer__text">Created by <a href="https://www.linkedin.com/in/ashimwe-cedrick" target="_blank" rel="noopener">Ashimwe Rushinga Cedrick</a> &copy; 2024 Your Furniture Company</p>-->
+
+<!--</footer>-->
+<!--</body>-->
+<!--</html>-->
