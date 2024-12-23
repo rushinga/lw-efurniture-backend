@@ -55,7 +55,7 @@ public class UserService {
         saveResetTokenForUser(user, token);
 
         // Prepare and send email
-        String resetUrl = "http://localhost:8080/reset-password?token=" + token;
+        String resetUrl = "https://lw-efurniture-backend-production.up.railway.app/reset-password?token=" + token;
         String message = "To reset your password, click the link below:\n" + resetUrl;
         sendEmail(email, "Password Reset", message);
 

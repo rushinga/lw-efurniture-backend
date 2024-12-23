@@ -20,7 +20,7 @@ public class PasswordResetController {
 //    public String showForgotPasswordForm() {
 //        return "forgot-password"; // Forgot password form page
 //    }
-
+ 
     // Handle Forgot Password Request
     @PostMapping("/forgot-password")
     public String handleForgotPassword(@RequestBody User userObj) {
